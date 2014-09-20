@@ -1,0 +1,10 @@
+<div class="control-group fields">
+  <div class="controls">
+    <%= f.text_field :having, { :class => 'mi-datepicker' } %>
+    <%= f.select :recipe_id, Recipe.order("name").collect {|recipe| [ "#{recipe.name} (#{recipe.menu_items.count})", recipe.id ] } %>
+    <%= link_to_remove_fields "", f %>
+  </div>
+</div>
+<script>
+	$( ".mi-datepicker:last" ).datepicker({ dateFormat: "yy-mm-dd" });
+</script>

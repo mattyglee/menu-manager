@@ -1,0 +1,21 @@
+<h1>Shopping Items</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Action</th>
+  </tr>
+
+<% @shopping_items.each do |shopping_item| %>
+  <tr>
+    <td><%= shopping_item.name %></td>
+    <td><%= link_to 'Show', shopping_item %> |
+    		<%= link_to 'Edit', edit_shopping_item_path(shopping_item) %> |
+    		<%= link_to 'Destroy', shopping_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shopping item', new_shopping_item_path %>

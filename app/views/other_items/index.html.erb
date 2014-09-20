@@ -1,0 +1,27 @@
+<h1>Other Items</h1>
+
+<table>
+  <tr>
+    <th>Shopping list</th>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @other_items.each do |other_item| %>
+  <tr>
+    <td><%= other_item.shopping_list_id %></td>
+    <td><%= other_item.name %></td>
+    <td><%= other_item.quantity %></td>
+    <td><%= link_to 'Show', other_item %></td>
+    <td><%= link_to 'Edit', edit_other_item_path(other_item) %></td>
+    <td><%= link_to 'Destroy', other_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Other item', new_other_item_path %>

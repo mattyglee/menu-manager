@@ -1,0 +1,69 @@
+<h1>Foods</h1>
+
+<%= link_to 'Add Food', new_food_path %>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Food group</th>
+    <th>Preferred unit</th>
+    <th>Millilitres</th>
+    <th>Grams</th>
+    <th>Item description</th>
+    <th>Action</th>
+  </tr>
+
+<% @foods.each do |food| %>
+  <tr>
+    <td><%= link_to food.name, food %></td>
+    <td><%= food.food_group.name %></td>
+    <td><%= food.preferred_unit %></td>
+    <td><%= food.millilitres %></td>
+    <td><%= food.grams %></td>
+    <td><%= food.item_description %></td>
+    <td><%= link_to '', edit_food_path(food), class: "icon-pencil", title: "edit" %> 
+    		<%= link_to '', food, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove", title: "delete" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add Food', new_food_path %>
+
+<script>
+    var th = jQuery('th'),
+        inverse = false;
+    
+    th.click(function(){
+        
+        var header = $(this),
+            index = header.index();
+            
+        header
+            .closest('table')
+            .find('td')
+            .filter(function(){
+                return $(this).index() === index;
+            })
+            .sortElements(function(a, b){
+                
+                a = $(a).text();
+                b = $(b).text();
+                
+                return (
+                    isNaN(a) || isNaN(b) ?
+                        a > b : +a > +b
+                    ) ?
+                        inverse ? -1 : 1 :
+                        inverse ? 1 : -1;
+                    
+            }, function(){
+                return this.parentNode;
+            });
+        
+        inverse = !inverse;
+        
+    });
+    
+</script>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  recipe_id: 1
+  menu_id: 1
+  having: 2013-09-12
+
+two:
+  recipe_id: 1
+  menu_id: 1
+  having: 2013-09-12

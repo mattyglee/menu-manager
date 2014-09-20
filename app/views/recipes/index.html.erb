@@ -1,0 +1,68 @@
+<h1>Recipes</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Method</th>
+    <th>Book</th>
+    <th>Page</th>
+    <th>Preparation time</th>
+    <th>Total time</th>
+    <th>Action</th>
+  </tr>
+
+<% @recipes.each do |recipe| %>
+  <tr>
+    <td><%= link_to recipe.name, recipe %></td>
+    <td><%= recipe.method %></td>
+    <td><%= recipe.book.title unless recipe.book.nil? %></td>
+    <td><%= recipe.page %></td>
+    <td><%= recipe.preparation_time %></td>
+    <td><%= recipe.total_time %></td>
+    <td><%= link_to 'Copy', copy_recipe_path(recipe) %> |
+    		<%= link_to 'Edit', edit_recipe_path(recipe) %> |
+    		<%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recipe', new_recipe_path %>
+
+<script>
+    var th = jQuery('th'),
+        inverse = false;
+    
+    th.click(function(){
+        
+        var header = $(this),
+            index = header.index();
+            
+        header
+            .closest('table')
+            .find('td')
+            .filter(function(){
+                return $(this).index() === index;
+            })
+            .sortElements(function(a, b){
+                
+                a = $(a).text();
+                b = $(b).text();
+                
+                return (
+                    isNaN(a) || isNaN(b) ?
+                        a > b : +a > +b
+                    ) ?
+                        inverse ? -1 : 1 :
+                        inverse ? 1 : -1;
+                    
+            }, function(){
+                return this.parentNode;
+            });
+        
+        inverse = !inverse;
+        
+    });
+    
+</script>

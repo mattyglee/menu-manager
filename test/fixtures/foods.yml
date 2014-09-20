@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  food_group_id: 1
+  preferred_unit: MyString
+  cups: 9.99
+  mililitres: 1
+  grams: 1
+  teaspoons: 9.99
+  tablespoons: 9.99
+  item_description: MyString
+
+two:
+  name: MyString
+  food_group_id: 1
+  preferred_unit: MyString
+  cups: 9.99
+  mililitres: 1
+  grams: 1
+  teaspoons: 9.99
+  tablespoons: 9.99
+  item_description: MyString

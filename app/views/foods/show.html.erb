@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @food.name %></h2>
+
+<p>
+  <b>Food group:</b>
+  <%= @food.food_group.name %>
+</p>
+
+<p>
+  <b>Preferred unit:</b>
+  <%= @food.preferred_unit %>
+</p>
+
+<p>
+  <b>Millilitres:</b>
+  <%= @food.millilitres %>
+</p>
+
+<p>
+  <b>Grams:</b>
+  <%= @food.grams %>
+</p>
+
+<p>
+  <b>Item description:</b>
+  <%= @food.item_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back', foods_path %>
+
+<h3>Recipes</h3>
+<ul>
+<% @food.ingredients.each do |i| %>
+	<li><%= link_to i.recipe.name, i.recipe %></li>
+<% end %>
+</ul>

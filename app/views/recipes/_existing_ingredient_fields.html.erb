@@ -1,0 +1,26 @@
+<div class="control-group fields">
+	<div class="controls">
+	  <%= f.text_field :quantity_description, :class => "input-mini" %>
+	  <%= f.collection_select 'unit', Food::UNITS, :last, :last %>
+	  <input type="text" name="food_input" id="food-input_<%= @ingredient_index %>" autocomplete="off" value="<%= Food.find(f.object.food_id).name if f.object.food_id %>">
+		<%= f.hidden_field :food_id, :id => "food_id_" + @ingredient_index.to_s %>
+	  <%= f.text_field :description %>
+	  <%= link_to_remove_fields "", f %>
+	</div>
+</div>
+
+<script>
+
+$( "#food-input_<%= @ingredient_index %>" ).typeahead({
+	source: food_labels
+  ,  updater: function (item) {
+        //save the id value into the hidden field   
+        $( "#food_id_<%= @ingredient_index %>" ).val( food_ids[ item ] );
+
+        //return the string you want to go into the textbox (e.g. name)
+        return item;
+    }
+});
+	
+</script>
+

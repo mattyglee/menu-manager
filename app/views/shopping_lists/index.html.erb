@@ -1,0 +1,23 @@
+<h1>Shopping Lists</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Menu Starting</th>
+    <th>Number of Items</th>
+    <th>Action</th>
+  </tr>
+
+<% @shopping_lists.each do |shopping_list| %>
+  <tr>
+    <td><%= shopping_list.menu.start_date.strftime("%A, %e %b") %></td>
+    <td><%= shopping_list.food_items.count + shopping_list.other_items.count %></td>
+    <td><%= link_to 'Show', shopping_list %> |
+    		<%= link_to 'Edit', edit_shopping_list_path(shopping_list) %> |
+    		<%= link_to 'Destroy', shopping_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shopping list', new_shopping_list_path %>

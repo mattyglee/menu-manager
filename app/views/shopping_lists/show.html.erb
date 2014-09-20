@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>For Week Starting:</b>
+  <%= @shopping_list.menu.start_date.strftime("%A, %e %b") %>
+</p>
+
+<div class="row-fluid">
+  <p><b>Food items:</b></p>
+  <% @grouped_food_items.each do |grp, items| %>
+  <div class="span3">
+  	<p><b><i><%= grp %></i></b></p>
+	  <% items.each do |fi| %>
+	  	<%= fi.display %><br/>
+	  <% end %>
+  	<br/>
+  </div>
+  <% end %>
+</div>
+
+<div class="row-fluid">
+  <p><b>Other items:</b></p>
+  <div class="span3">
+  <% @shopping_list.other_items.each do |oi| %>
+  	<%= oi.quantity.to_s+" x " if oi.quantity %><%= oi.shopping_item.name %></br>
+  <% end %>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
+<%= link_to 'Back', shopping_lists_path %>

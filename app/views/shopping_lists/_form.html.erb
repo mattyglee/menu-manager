@@ -1,0 +1,45 @@
+<%= form_for(@shopping_list, html: { class: "form-horizontal" }) do |f| %>
+  <% if @shopping_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shopping_list.errors.count, "error") %> prohibited this shopping_list from being saved:</h2>
+
+      <ul>
+      <% @shopping_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<% if !@shopping_list.menu.nil? %>
+	<p>
+	  <b>For Week Starting:</b>
+	  <%= @shopping_list.menu.start_date.strftime("%A, %e %b") %>
+	</p>
+	<% end %>
+  
+  <script>
+		var food_ids = { <%= raw @food_id_map %> };
+		var food_labels = new Array(<%= raw @food_name_list %>);
+		var shopping_item_ids = { <%= raw @shopping_item_id_map %> };
+		var shopping_item_labels = new Array(<%= raw @shopping_item_name_list %>);
+	</script>
+  
+  <%= f.label :food_items, :class => "control-label" %>
+  <%= f.fields_for :food_items do |builder| %>
+	  <%= render 'existing_food_item_fields', :f => builder %>
+	<% end %>
+	<%= link_to_add_fields("Add a food item", f, :food_items, :class => "btn btn-primary", :title => "Add a food item.") %>
+  
+  <p>&nbsp;</p>
+  
+  <%= f.label :other_items, :class => "control-label" %>
+  <%= f.fields_for :other_items do |builder| %>
+	  <%= render 'existing_other_item_fields', :f => builder %>
+	<% end %>
+	<%= link_to_add_fields("Add another item", f, :other_items, :class => "btn btn-primary", :title => "Add another item.") %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

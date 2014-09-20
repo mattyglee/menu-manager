@@ -1,0 +1,29 @@
+<%= form_for(@other_item) do |f| %>
+  <% if @other_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@other_item.errors.count, "error") %> prohibited this other_item from being saved:</h2>
+
+      <ul>
+      <% @other_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :shopping_list_id %><br />
+    <%= f.number_field :shopping_list_id %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_item %><br />
+    <%= f.number_field :shopping_item_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

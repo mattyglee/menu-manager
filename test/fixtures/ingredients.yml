@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  unit: MyString
+  quantity: 9.99
+  food_id: 1
+  dish_id: 1
+
+two:
+  unit: MyString
+  quantity: 9.99
+  food_id: 1
+  dish_id: 1

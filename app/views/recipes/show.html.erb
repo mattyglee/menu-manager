@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @recipe.name %>
+</p>
+
+<p><b>Ingredients:</b></p>
+<ul>
+<% @recipe.ingredients.each do |i| %>
+	<li><%= link_to i.display, i.food %></li>
+<% end %>
+</ul>
+
+<p>
+  <b>Method:</b>
+  <%= @recipe.method %>
+</p>
+
+<p>
+  <b>Book:</b>
+  <%= @recipe.book.title if @recipe.book %>
+</p>
+
+<p>
+  <b>Page:</b>
+  <%= @recipe.page %>
+</p>
+
+<p>
+  <b>Preparation time:</b>
+  <%= @recipe.preparation_time %>
+</p>
+
+<p>
+  <b>Total time:</b>
+  <%= @recipe.total_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>

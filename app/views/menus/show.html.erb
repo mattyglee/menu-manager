@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start date:</b>
+  <%= @menu.start_date %>
+</p>
+
+<ul>
+	<% @menu.menu_items.sort{|x,y| x.having <=> y.having}.each do |item| %>
+		<li><%= item.having.strftime("%A") %>: 
+			<%= link_to item.recipe.name, item.recipe %>
+			<% if item.recipe.book %>
+				(<%= item.recipe.book.short_name %>: p<%= item.recipe.page %>)
+			<% end %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Back', menus_path %>

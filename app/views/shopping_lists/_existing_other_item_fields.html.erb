@@ -1,0 +1,8 @@
+<div class="control-group fields">
+	<div class="controls">
+	  <%= f.text_field :quantity, :class => "input-mini" %>
+	  <%= ShoppingItem.find(f.object.shopping_item_id).name %>
+		<%= f.hidden_field :shopping_item_id %>
+	  <%= link_to_remove_fields "", f %>
+	</div>
+</div>

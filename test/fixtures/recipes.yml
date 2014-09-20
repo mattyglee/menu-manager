@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  method: MyText
+  book: MyString
+  page: MyString
+  preparation_time: 1
+  total_time: 1
+
+two:
+  name: MyString
+  method: MyText
+  book: MyString
+  page: MyString
+  preparation_time: 1
+  total_time: 1

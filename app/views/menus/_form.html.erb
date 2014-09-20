@@ -1,0 +1,37 @@
+<%= javascript_include_tag "menus" %>
+
+<%= form_for(@menu, html: { class: "form-horizontal" }) do |f| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% @menu.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :start_date, :class => "control-label" %>
+    <div class="controls">
+    	<%= f.text_field :start_date, {:id => 'datepicker'} %>
+    </div>
+  </div>
+  <script>
+	  $(function() {
+	    $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+	  });
+  </script>
+  
+  <%= f.label :menu_items, :class => "control-label" %>
+  <%= f.fields_for :menu_items do |builder| %>
+	  <%= render 'menu_item_fields', :f => builder %>
+	<% end %>
+  <p><%= link_to_add_fields("Add a recipe", f, :menu_items, :class => "btn btn-primary", :title => "Add a new recipe.") %></p>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
